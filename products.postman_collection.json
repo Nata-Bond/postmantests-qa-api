@@ -1,0 +1,758 @@
+{
+  "info": {
+    "_postman_id": "e0819a16-ec35-4e36-bdd1-456fb97db0dc",
+    "name": "products",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "31135497"
+  },
+  "item": [
+    {
+      "name": "/products",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status('OK')",
+              "});",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Every booking has numeric bookingid\", function () {",
+              "    const bookings = pm.response.json();",
+              "    bookings.forEach(booking => {",
+              "        pm.expect(booking.bookingid).to.exist;",
+              "        pm.expect(booking.bookingid).to.be.a(\"number\");",
+              "    });",
+              "",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://restful-booker.herokuapp.com/booking",
+          "protocol": "https",
+          "host": [
+            "restful-booker",
+            "herokuapp",
+            "com"
+          ],
+          "path": [
+            "booking"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/products/<id>",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200)});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status(\"OK\")}); ",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Response is json\", function () {",
+              "    pm.response.to.be.json});",
+              "",
+              "    const response = pm.response.json()",
+              "",
+              "    pm.test(\"Response has correct field types\"), function () {",
+              "        pm.expect(response.id).to.be.a('number');",
+              "        pm.expect(response.title).to.be.a('string');",
+              "        pm.expect(response.slug).to.be.a('string');",
+              "        pm.expect(response.price).to.be.a('number');",
+              "        pm.expect(response.description).to.be.a('string');",
+              "        pm.expect(response.category).to.be.an('object');",
+              "        pm.expect(response.images).to.be.an('array');",
+              "        pm.expect(response.creationAt).to.be.a('string');",
+              "        pm.expect(response.updatedAt).to.be.a('string')}",
+              "        "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products/1",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/products/slug",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200)});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status(\"OK\")}); ",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Response is json\", function () {",
+              "    pm.response.to.be.json});",
+              "",
+              "const response = pm.response.json()",
+              "",
+              "    pm.test(\"Response has correct field types\"), function () {",
+              "        pm.expect(response.id).to.be.a('number');",
+              "        pm.expect(response.title).to.be.a('string');",
+              "        pm.expect(response.slug).to.be.a('string');",
+              "        pm.expect(response.price).to.be.a('number');",
+              "        pm.expect(response.description).to.be.a('string');",
+              "        pm.expect(response.category).to.be.an('object');",
+              "        pm.expect(response.images).to.be.an('array');",
+              "        pm.expect(response.creationAt).to.be.a('string');",
+              "        pm.expect(response.updatedAt).to.be.a('string')}",
+              "        "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products/slug/classic-grey-hooded-sweatshirt",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "slug",
+            "classic-grey-hooded-sweatshirt"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createProduct",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {",
+              "pm.response.to.have.status(201)});",
+              "",
+              "pm.test(\"Status name is Created\", function () {",
+              "    pm.response.to.have.status(\"Created\")}); ",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Response is json\", function () {",
+              "    pm.response.to.be.json});",
+              "",
+              "const response = pm.response.json()",
+              "",
+              "    pm.test(\"Response has correct field types\"), function () {",
+              "        pm.expect(response.id).to.be.a('number');",
+              "        pm.expect(response.title).to.be.a('string');",
+              "        pm.expect(response.slug).to.be.a('string');",
+              "        pm.expect(response.price).to.be.a('number');",
+              "        pm.expect(response.description).to.be.a('string');",
+              "        pm.expect(response.category).to.be.an('object');",
+              "        pm.expect(response.images).to.be.an('array');",
+              "        pm.expect(response.creationAt).to.be.a('string');",
+              "        pm.expect(response.updatedAt).to.be.a('string')}",
+              "        ",
+              "        ",
+              "        pm.test(\"Response has correct category field types\"), function () {",
+              "            pm.expect(response.category.to.have.property('id').that.is.a('number'));",
+              "            pm.expect(response.category.to.have.property('name').that.is.a('string'));",
+              "            pm.expect(response.category.to.have.property('image').that.is.a('string'));",
+              "            pm.expect(response.category.to.have.property('creationAt').that.is.a('string'));",
+              "            pm.expect(response.category.to.have.property('updatedAt').that.is.a('string'))}",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "// Генерація випадкового title (10 латинських літер)",
+              "",
+              "function generateRandomTitle(length = 10) {",
+              "    const chars = 'abcdefghijklmnopqrstuvwхyz';",
+              "    let title = '';",
+              "    for (let i = 0; i < length; i++) {",
+              "        title += chars.charAt(Math.floor(Math.random() * chars.length));",
+              "    }",
+              "    return title;",
+              "}",
+              "",
+              "const title = generateRandomTitle();",
+              "",
+              "const categoryId = Math.floor(Math.random() * 8) + 1;",
+              "",
+              "// Зберігаємо в змінні колекції",
+              "",
+              "pm.collectionVariables.set('title', title);",
+              "pm.collectionVariables.set('categoryId', categoryId);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\":\"{{title}}\",\n  \"price\": 10,\n  \"description\": \"A description\",\n  \"categoryId\": {{categoryId}},\n  \"images\": [\"https://placehold.co/600x400\"]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateProduct",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "function randomString(length = 10) {",
+              "    const chars = \"abcdefghijklmnopqrstuvwxyz\";",
+              "    let result = \"\";",
+              "",
+              "    for (let i = 0; i < length; i++) {",
+              "        result += chars.charAt(Math.floor(Math.random() * chars.length));",
+              "    }",
+              "",
+              "    return result;",
+              "}",
+              "",
+              "function generateProduct() {",
+              "    const unique = Date.now();",
+              "",
+              "    return {",
+              "        title: `product-${randomString()}-${unique}`,",
+              "        price: Math.floor(Math.random() * 10000) + 1,",
+              "        description: `description-${randomString(15)}-${unique}`,",
+              "        categoryId: Math.floor(Math.random() * 8) + 1,",
+              "        images: [",
+              "            `https://placehold.co/600x400?text=${unique}`",
+              "        ]",
+              "    };",
+              "}",
+              "",
+              "const product = generateProduct();",
+              "",
+              "// зберігаємо всі дані",
+              "Object.entries(product).forEach(([key, value]) => {",
+              "    pm.collectionVariables.set(",
+              "        key,",
+              "        Array.isArray(value) ? JSON.stringify(value) : value",
+              "    );",
+              "});",
+              "",
+              "pm.sendRequest({",
+              "    url: \"https://api.escuelajs.co/api/v1/products/\",",
+              "    method: \"POST\",",
+              "    header: {",
+              "        \"Content-Type\": \"application/json\"",
+              "    },",
+              "    body: {",
+              "        mode: \"raw\",",
+              "        raw: JSON.stringify(product)",
+              "    }",
+              "}, function (err, res) {",
+              "",
+              "    if (err) {",
+              "        console.log(err);",
+              "        return;",
+              "    }",
+              "",
+              "    const createdProduct = res.json();",
+              "",
+              "    pm.collectionVariables.set(\"productId\", createdProduct.id);",
+              "",
+              "    console.log(createdProduct);",
+              "});",
+              "",
+              "function randomString(length = 10) {",
+              "",
+              "    const chars = \"abcdefghijklmnopqrstuvwxyz\";",
+              "",
+              "    let result = \"\";",
+              "",
+              "    for (let i = 0; i < length; i++) {",
+              "",
+              "        result += chars.charAt(Math.floor(Math.random() * chars.length));",
+              "",
+              "    }",
+              "",
+              "    return result;",
+              "",
+              "}",
+              "",
+              "function generateUpdatedProduct() {",
+              "",
+              "    const unique = Date.now();",
+              "",
+              "    return {",
+              "",
+              "        updatedTitle: `updated-${randomString()}-${unique}`,",
+              "",
+              "        updatedPrice: Math.floor(Math.random() * 10000) + 1,",
+              "",
+              "        updatedDescription: `updated-description-${randomString(15)}-${unique}`,",
+              "",
+              "        updatedCategoryId: Math.floor(Math.random() * 8) + 1,",
+              "",
+              "        updatedImages: JSON.stringify([",
+              "",
+              "            `https://placehold.co/600x400?updated=${unique}`",
+              "",
+              "        ])",
+              "",
+              "    };",
+              "",
+              "}",
+              "",
+              "const updatedProduct = generateUpdatedProduct();",
+              "",
+              "Object.entries(updatedProduct).forEach(([key, value]) => {",
+              "",
+              "    pm.collectionVariables.set(key, value);",
+              "",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "pm.response.to.have.status(200)});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status(\"OK\")}); ",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Response is json\", function () {",
+              "    pm.response.to.be.json});",
+              "",
+              "    const body = pm.response.json();",
+              "",
+              "pm.test(\"Title updated\", () => {",
+              "    pm.expect(body.title).to.eql(pm.collectionVariables.get(\"updatedTitle\"));",
+              "});",
+              "",
+              "pm.test(\"Price updated\", () => {",
+              "    pm.expect(body.price).to.eql(Number(pm.collectionVariables.get(\"updatedPrice\")));",
+              "});",
+              "",
+              "pm.test(\"Description updated\", () => {",
+              "    pm.expect(body.description).to.eql(pm.collectionVariables.get(\"updatedDescription\"));",
+              "});",
+              "",
+              "pm.test(\"Category updated\", () => {",
+              "    pm.expect(body.category.id).to.eql(Number(pm.collectionVariables.get(\"updatedCategoryId\")));",
+              "});",
+              "",
+              "pm.test(\"Images updated\", () => {",
+              "    pm.expect(body.images).to.eql(JSON.parse(pm.collectionVariables.get(\"updatedImages\")));",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\n  \"title\": \"{{updatedTitle}}\",\n  \"price\": {{updatedPrice}},\n  \"description\": \"{{updatedDescription}}\",\n  \"categoryId\": {{updatedCategoryId}},\n  \"images\": {{updatedImages}}\n\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products/{{productId}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "{{productId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deleteProduct",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "function generateRandomTitle(length = 10) {",
+              "    const chars = 'abcdefghijklmnopqrstuvwxyz';",
+              "    let title = '';",
+              "",
+              "    for (let i = 0; i < length; i++) {",
+              "        title += chars.charAt(Math.floor(Math.random() * chars.length));",
+              "    }",
+              "",
+              "    // додаємо timestamp для гарантії унікальності",
+              "    return `${title}-${Date.now()}`;",
+              "}",
+              "",
+              "const title = generateRandomTitle();",
+              "const categoryId = Math.floor(Math.random() * 8) + 1;",
+              "",
+              "const product = {",
+              "    title,",
+              "    price: 10,",
+              "    description: \"A description\",",
+              "    categoryId,",
+              "    images: [\"https://placehold.co/600x400\"]",
+              "};",
+              "",
+              "pm.collectionVariables.set(\"title\", title);",
+              "pm.collectionVariables.set(\"categoryId\", categoryId);",
+              "",
+              "pm.sendRequest({",
+              "    url: \"https://api.escuelajs.co/api/v1/products/\",",
+              "    method: \"POST\",",
+              "    header: {",
+              "        \"Content-Type\": \"application/json\"",
+              "    },",
+              "    body: {",
+              "        mode: \"raw\",",
+              "        raw: JSON.stringify(product)",
+              "    }",
+              "}, function (err, res) {",
+              "",
+              "    if (err) {",
+              "        console.log(err);",
+              "        return;",
+              "    }",
+              "",
+              "    const createdProduct = res.json();",
+              "",
+              "    pm.collectionVariables.set(\"deleteProductId\", createdProduct.id);",
+              "",
+              "    console.log(\"Created product:\", createdProduct);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 204\", function () {",
+              "pm.response.to.have.status(204)});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status(\"OK\")}); ",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "pm.test(\"Response is true\", () => {",
+              "    pm.expect(pm.response.json()).to.be.true;",
+              "",
+              "});",
+              "",
+              "const deleteProductId = pm.collectionVariables.get(\"deleteProductId\");",
+              "",
+              "pm.sendRequest({",
+              "",
+              "    url: `https://api.escuelajs.co/api/v1/products/${deleteProductId}`,",
+              "",
+              "    method: \"GET\"",
+              "",
+              "}, function (err, res) {",
+              "",
+              "    pm.test(\"Deleted product cannot be retrieved\", function () {",
+              "",
+              "        pm.expect(err).to.be.null;",
+              "",
+              "        pm.expect(res.code).to.eql(404);",
+              "",
+              "    });",
+              "",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products/{{deleteProductId}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products",
+            "{{deleteProductId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "limit",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const limit = Math.floor(Math.random() * 10) + 1;",
+              "",
+              "pm.collectionVariables.set(\"limit\", limit);",
+              "",
+              "console.log(`Generated limit: ${limit}`);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Status name is OK\", function () {",
+              "    pm.response.to.have.status('OK')",
+              "});",
+              "",
+              "pm.test(\"Response time is less than 1000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(1000)});",
+              "",
+              "const response = pm.response.json();",
+              "",
+              "const expectedLimit = Number(pm.collectionVariables.get(\"limit\"));",
+              "",
+              "pm.test(\"Returned expected number of products\", () => {",
+              "",
+              "    pm.expect(response).to.be.an(\"array\");",
+              "",
+              "    pm.expect(response.length).to.eql(expectedLimit);",
+              "",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.escuelajs.co/api/v1/products?offset=0&limit={{limit}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "escuelajs",
+            "co"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "products"
+          ],
+          "query": [
+            {
+              "key": "offset",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "{{limit}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "title",
+      "value": ""
+    },
+    {
+      "key": "categoryId",
+      "value": ""
+    },
+    {
+      "key": "productId",
+      "value": ""
+    },
+    {
+      "key": "price",
+      "value": ""
+    },
+    {
+      "key": "description",
+      "value": ""
+    },
+    {
+      "key": "images",
+      "value": ""
+    },
+    {
+      "key": "updatedTitle",
+      "value": ""
+    },
+    {
+      "key": "updatedPrice",
+      "value": ""
+    },
+    {
+      "key": "updatedDescription",
+      "value": ""
+    },
+    {
+      "key": "updatedCategoryId",
+      "value": ""
+    },
+    {
+      "key": "updatedImages",
+      "value": ""
+    },
+    {
+      "key": "deleteProductId",
+      "value": ""
+    },
+    {
+      "key": "limit",
+      "value": ""
+    }
+  ]
+}
